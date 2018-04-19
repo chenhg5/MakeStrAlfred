@@ -30,14 +30,17 @@ class ManageStr
     {
         $length = intval($query) < 50 ?  intval($query) : 50;
 
-        $randArr = ['1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i','j','v','k',
+        $uuid = 'invalid length';
+        if ($length > 0) {
+            $randArr = ['1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h','i','j','v','k',
                     'l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G',
                     'H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-        shuffle($randArr);
+            shuffle($randArr);
 
-        $uuid = '';
-        for ($i = 0; $i < $length; $i++) {
-            $uuid .= $randArr[mt_rand(0, 62)];
+            $uuid = '';
+            for ($i = 0; $i < $length; $i++) {
+                $uuid .= $randArr[mt_rand(0, 62)];
+            }
         }
 
         $this->workflow->result()
